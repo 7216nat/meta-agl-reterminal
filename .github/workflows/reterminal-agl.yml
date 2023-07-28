@@ -1,0 +1,69 @@
+name: reterminal-agl
+
+on:
+  workflow_dispatch:
+
+jobs:
+  image-build:
+
+    env:
+      TARGET_BRANCH: needlefish
+      MACHINE: seeed-reterminal
+      DISTRO: kirkstone
+      HOME: /home/7216nat/AGL
+      
+    runs-on: [self-hosted, linux]
+
+    container:
+      image: ghcr.io/7216nat/agl_demo:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.ACTIONS_TOKEN }}
+      options:
+        --user 7216nat
+        -it --name agl_demo
+        -v /scratch/xukai/AGL/downloads:/home/7216nat/AGL/downloads:Z
+        -v /scratch/xukai/AGL/sstate-cache:/home/7216nat/AGL/sstate-cache:Z
+        -v /scratch/xukai/AGL/out/artifacts:/home/7216nat/AGL/artifacts:Z
+        -e HOME=/home/7216nat/AGL
+    
+    steps:
+      - name: Display UID info
+        run: |
+          whoami
+          id -u
+      
+      - name: Build AGL
+        working-directory: ${{ env.HOME }}
+        run: |
+          pwd
+          wget https://raw.githubusercontent.com/7216nat/meta-agl-reterminal/main/build.sh
+          chmod +x build.sh
+          ./build.sh 
+      
+      - name: Configure build
+        shell: bash
+        working-directory: ${{ env.HOME }}/${{ env.TARGET_BRANCH }}
+        run: |
+          . meta-agl/scripts/aglsetup.sh -m ${{ env.MACHINE }} -b ${{ env.MACHINE }} agl-demo agl-devel agl-flutter
+          bitbake-layers show-layers
+          bitbake -e > bb.enviroment
+      
+      - name: Build image
+        shell: bash
+        working-directory: ${{ env.HOME }}/${{ env.TARGET_BRANCH }}
+        run: |
+          . meta-agl/scripts/aglsetup.sh -m ${{ env.MACHINE }} -b ${{ env.MACHINE }} agl-demo agl-devel agl-flutter
+          bitbake agl-ivi-cluster-demo-flutter
+          rm -rf ${{ env.HOME }}/artifacts/*
+          cp bb.enviroment ${{ env.HOME }}/artifacts/
+          ls ${{ env.HOME }}/${{ env.TARGET_BRANCH }}
+          ls ${{ env.HOME }}/${{ env.TARGET_BRANCH }}/${{ env.MACHINE }}
+          ls ${{ env.HOME }}/${{ env.TARGET_BRANCH }}/${{ env.MACHINE }}/tmp/deploy/images/${{ env.MACHINE }}/
+          cp ${{ env.HOME }}/${{ env.TARGET_BRANCH }}/${{ env.MACHINE }}/tmp/deploy/images/${{ env.MACHINE }}/agl-ivi-cluster-demo-platform-flutter-seeed-reterminal.wic.xz ${{ env.HOME }}/artifacts/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.MACHINE }}-agl-ivi-cluster-demo-flutter
+          path: ${{ env.HOME }}/artifacts/*
