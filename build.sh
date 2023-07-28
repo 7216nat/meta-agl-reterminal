@@ -21,5 +21,5 @@ bitbake-layers add-layer $HOME/external/meta-tensorflow-lite
 bitbake-layers add-layer $HOME/bsp/meta-raspberrypi
 bitbake-layers add-layer $HOME/extenal/meta-agl-reterminal
 
-cat $HOME/extenal/meta-agl-reterminal/local.conf >> $HOME/MACHINE/conf/local.conf
+cat $HOME/extenal/meta-agl-reterminal/local.conf >> $HOME/$MACHINE/conf/local.conf
 

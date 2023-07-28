@@ -35,6 +35,7 @@ jobs:
       
       - name: Build AGL
         working-directory: ${{ env.HOME }}
+        shell: bash
         run: |
           pwd
           wget https://raw.githubusercontent.com/7216nat/meta-agl-reterminal/main/build.sh
