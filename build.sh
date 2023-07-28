@@ -1,12 +1,7 @@
 #!/bin/bash 
 HOME=`pwd`
-TARGET_BRANCH=needlefish
-HOME=$HOME/$TARGET_BRANCH
 DISTRO=kirkstone
 MACHINE=seeed-reterminal
-
-repo init -b needlefish -u https://gerrit.automotivelinux.org/gerrit/AGL/AGL-repo -m needlefish_14.0.5.xml
-repo sync
 
 cd $HOME/external && git clone -b $DISTRO https://github.com/7216nat/meta-tensorflow-lite.git
 cd $HOME/external && git clone https://github.com/7216nat/meta-agl-reterminal.git
