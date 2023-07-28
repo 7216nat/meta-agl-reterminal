@@ -37,10 +37,6 @@ jobs:
         working-directory: ${{ env.HOME }}
         run: |
           pwd
-          repo init -b needlefish -u https://gerrit.automotivelinux.org/gerrit/AGL/AGL-repo -m needlefish_14.0.5.xml
-          repo sync
-          cd ${{ env.HOME }}/needlefish
-          pwd
           wget https://raw.githubusercontent.com/7216nat/meta-agl-reterminal/main/build.sh
           chmod +x build.sh
           ./build.sh 
