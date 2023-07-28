@@ -54,7 +54,7 @@ jobs:
         working-directory: ${{ env.HOME }}/${{ env.TARGET_BRANCH }}
         run: |
           . meta-agl/scripts/aglsetup.sh -m ${{ env.MACHINE }} -b ${{ env.MACHINE }} agl-demo agl-devel agl-flutter
-          bitbake agl-ivi-cluster-demo-flutter
+          bitbake agl-ivi-cluster-demo-platform-flutter
           rm -rf ${{ env.HOME }}/artifacts/*
           cp bb.enviroment ${{ env.HOME }}/artifacts/
           ls ${{ env.HOME }}/${{ env.TARGET_BRANCH }}
