@@ -16,7 +16,7 @@ cd $HOME/bsp && git clone https://github.com/Seeed-Studio/meta-seeed-reterminal.
 sed -i "s/usrmerge //" $HOME/meta-agl/meta-agl-core/conf/distro/poky-agl.conf
 cp -r $HOME/external/meta-agl-reterminal/conf/machine/seeed-reterminal/ $HOME/meta-agl/templates/machine/
 
-source $HOME/meta-agl/scripts/aglsetup.sh -b $MACHINE -m $MACHINE agl-demo agl-devel agl-flutter
+cd $HOME && source $HOME/meta-agl/scripts/aglsetup.sh -b $MACHINE -m $MACHINE agl-demo agl-devel agl-flutter
 
 bitbake-layers add-layer $HOME/external/meta-tensorflow-lite
 bitbake-layers add-layer $HOME/bsp/meta-raspberrypi
