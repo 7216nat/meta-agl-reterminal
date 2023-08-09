@@ -53,6 +53,7 @@ IMAGE_INSTALL:append = " \
 	gstreamer1.0 \
 	libcamera \
 	x264 \
+	gstreamer1.0-plugins-ugly \
 	camera-gstreamer \
 	python3-tensorflow-lite-example \
 	libedgetpu-max \
