@@ -1,0 +1,18 @@
+{
+    "Vehicle": {
+      "children": {
+        "ADAS": {
+          "children": {
+            "SpeedSign": {
+                "datatype": "float",
+                "description": "Navigation elapsed distance",
+                "type": "sensor",
+                "unit": "km",
+                "uuid": "0bef606dcf5b4a75bfd7e5f3c68359ec"
+            }
+          }
+        }
+      }
+    }
+  }
+  
