@@ -8,13 +8,10 @@ SECTION = "graphics"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=0c52b0e4b5f0dbf57ea7d44bebb2e29d"
 
-SRC_URI = "https://github.com/7216nat/flutter_instrument_cluster;protocol=https;branch=master \
+SRC_URI = "git://github.com/7216nat/flutter_instrument_cluster;protocol=https;branch=master \
     file://flutter-cluster-dashboard.service \
     file://flutter-cluster-dashboard.yaml \
-    file://flutter-cluster-dashboard.yaml.demo \
 "
-
-PV = "1.0+git${SRCPV}"
 SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"

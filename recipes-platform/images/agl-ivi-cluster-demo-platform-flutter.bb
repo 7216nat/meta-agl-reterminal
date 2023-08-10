@@ -13,6 +13,8 @@ IMAGE_INSTALL:append = " \
 "
 SPLASH = "psplash-raspberrypi"
 
+AGL_FLUTTER_RUNTIME ?= "runtimeprofile"
+
 # cluster
 IMAGE_FEATURES += "splash package-management ssh-server-openssh"
 
@@ -43,7 +45,7 @@ SEEED_RETERMINAL_INSTALLLS= " \
 	python3-seeed-python-reterminal \
 	"
 CLUSTER_PACKAGES= " \
-	flutter-cluster-dashboard-reterminal \
+	flutter-cluster-dashboard-reterminal-${AGL_FLUTTER_RUNTIME}\
 	"
 # generic
 IMAGE_INSTALL:append = " \
