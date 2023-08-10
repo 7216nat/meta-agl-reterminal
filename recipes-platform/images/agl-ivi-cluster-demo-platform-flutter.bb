@@ -42,13 +42,17 @@ SEEED_RETERMINAL_INSTALLLS= " \
 	spidev-test \
 	python3-seeed-python-reterminal \
 	"
-
+CLUSTER_PACKAGES= " \
+	flutter-cluster-dashboard-reterminal \
+	"
 # generic
 IMAGE_INSTALL:append = " \
-    ${@bb.utils.contains("AGL_FEATURES", "agl-demo-preload", "", "${IMAGE_KUKSA_PACKAGES}", d)} \
+    ${IMAGE_KUKSA_PACKAGES}  \
     ${SEEED_RETERMINAL_INSTALLLS} \
-	simple-can-simulator \
+    ${CLUSTER_PACKAGES} \ 
+    simple-can-simulator \
     "
+
 IMAGE_INSTALL:append = " \
 	gstreamer1.0 \
 	libcamera \
