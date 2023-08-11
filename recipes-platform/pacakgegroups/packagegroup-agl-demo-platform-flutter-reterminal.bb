@@ -23,10 +23,6 @@ AGL_APPS = " \
     flutter-hvac-${AGL_FLUTTER_RUNTIME} \
     ondemandnavi \
     settings \
-    mediaplayer \
-    messaging \
-    phone \
-    radio \
     "
 
 RDEPENDS:${PN}:append = " \
