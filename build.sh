@@ -11,7 +11,8 @@ repo sync
 
 cd $HOME/external && git clone -b $DISTRO https://github.com/7216nat/meta-tensorflow-lite.git
 cd $HOME/external && git clone https://github.com/7216nat/meta-agl-reterminal.git
-cd $HOME/bsp && git clone https://github.com/Seeed-Studio/meta-seeed-reterminal.git && git checkout 2ca6b7e462f7ff06c817029d644522ae66f1b4c7
+cd $HOME/bsp && git clone https://github.com/Seeed-Studio/meta-seeed-reterminal.git 
+cd $HOME/bsp/meta-seeed-reterminal && git checkout 2ca6b7e462f7ff06c817029d644522ae66f1b4c7
 
 sed -i "s/usrmerge //" $HOME/meta-agl/meta-agl-core/conf/distro/poky-agl.conf
 cp -r $HOME/external/meta-agl-reterminal/conf/machine/seeed-reterminal/ $HOME/meta-agl/templates/machine/
