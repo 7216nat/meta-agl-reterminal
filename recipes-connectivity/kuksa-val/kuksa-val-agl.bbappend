@@ -10,3 +10,5 @@ do_install:append:seeed-reterminal() {
     install -d ${D}${datadir}/kuksa-val/jwt
     install -m 0644 ${WORKDIR}/super-admin.json.token ${D}${datadir}/kuksa-val/jwt/
 }
+
+FILES:${PN} += "${datadir}/kuksa-val/overlays/ ${datadir}/kuksa-val/jwt"
