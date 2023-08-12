@@ -23,6 +23,7 @@ IMAGE_KUKSA_PACKAGES = " \
     kuksa-val-agl \
     kuksa-dbc-feeder \
     kuksa-vss-init \
+	kuksa-viss-client \
 "
 SEEED_RETERMINAL_INSTALLLS= " \
 	kernel-modules \
