@@ -63,6 +63,7 @@ IMAGE_INSTALL:append = " \
 	gstreamer1.0-plugins-ugly \
 	camera-gstreamer \
 	python3-tensorflow-lite-example \
+	tflite-examples-init \
 	libedgetpu-max \
 	libgfortran \
 	"

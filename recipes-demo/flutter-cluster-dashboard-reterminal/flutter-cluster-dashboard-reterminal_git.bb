@@ -29,9 +29,9 @@ AGL_APP_ID = "flutter_cluster_dashboard"
 AGL_APP_NAME = "Cluster"
 
 do_install:append() {
-    # install -D -m 0644 ${WORKDIR}/flutter-cluster-dashboard.service ${D}${systemd_user_unitdir}/flutter-cluster-dashboard.service
-    # install -d ${D}${systemd_user_unitdir}/agl-session.target.wants
-    # ln -s ../flutter-homescreen.service ${D}${systemd_user_unitdir}/agl-session.target.wants/flutter-cluster-dashboard.service
+    install -D -m 0644 ${WORKDIR}/flutter-cluster-dashboard.service ${D}${systemd_user_unitdir}/flutter-cluster-dashboard.service
+    install -d ${D}${systemd_user_unitdir}/agl-session.target.wants
+    ln -s ../flutter-cluster-dashboard.service ${D}${systemd_user_unitdir}/agl-session.target.wants/flutter-cluster-dashboard.service
  
     install -d ${D}${sysconfdir}/xdg/AGL
     install -m 0644 ${WORKDIR}/flutter-cluster-dashboard.yaml \
